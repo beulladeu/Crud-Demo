@@ -1,20 +1,11 @@
 package com.verkhonina.crud.model;
 
-public class Specialty {
-    private Long id;
+public class Specialty extends BaseEntity {
+
     private String name;
-    private Status status;
 
     public Specialty(String name) {
         this.name = name;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getName() {
@@ -25,12 +16,13 @@ public class Specialty {
         this.name = name;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+    @Override
+    public String toString() {
+        return "Specialty{" +
+                "id='" + super.getId() + '\'' +
+                "status='" + super.getStatus() + '\'' +
+                "name='" + name + '\'' +
+                '}';
     }
 }
 

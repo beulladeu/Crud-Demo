@@ -1,10 +1,10 @@
-package com.verkhonina.crud.controller;
+package com.verkhonina.crud.service;
 
 import com.verkhonina.crud.model.Developer;
 import com.verkhonina.crud.model.Skill;
 import com.verkhonina.crud.model.Specialty;
 import com.verkhonina.crud.repository.DeveloperRepository;
-import com.verkhonina.crud.repository.GsonDeveloperRepository;
+import com.verkhonina.crud.repository.gson.*;
 
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
-    public Long create(String firstName, String lastName, List<Skill> skills, Specialty specialty) {
+    public Developer create(String firstName, String lastName, List<Skill> skills, Specialty specialty) {
         Developer dev = new Developer(firstName, lastName, skills, specialty);
         return developerRepository.save(dev);
     }
@@ -38,7 +38,12 @@ public class DeveloperServiceImpl implements DeveloperService {
     }
 
     @Override
-    public boolean update(Developer developer) {
+    public Developer update(Developer developer) {
         return developerRepository.update(developer);
+    }
+
+    @Override
+    public List<Developer> getAll() {
+        return developerRepository.findAll();
     }
 }

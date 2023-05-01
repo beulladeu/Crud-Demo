@@ -2,14 +2,12 @@ package com.verkhonina.crud.model;
 
 import java.util.List;
 
-public class Developer {
-    private Long id;
+public class Developer extends BaseEntity{
+
     private String firstName;
     private String lastName;
     private List<Skill> skills;
     private Specialty specialty;
-    private Status status;
-
 
     public Developer(String firstName, String lastName, List<Skill> skills, Specialty specialty) {
         this.firstName = firstName;
@@ -20,14 +18,6 @@ public class Developer {
 
     public Developer(String firstName) {
         this.firstName = firstName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -62,11 +52,16 @@ public class Developer {
         this.specialty = specialty;
     }
 
-    public Status getStatus() {
-        return status;
-    }
 
-    public void setStatus(Status status) {
-        this.status = status;
+    @Override
+    public String toString() {
+        return "Developer{" +
+                "id='" + super.getId() + '\'' +
+                "status='" + super.getStatus() + '\'' +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", skills=" + skills +
+                ", specialty=" + specialty +
+                '}';
     }
 }

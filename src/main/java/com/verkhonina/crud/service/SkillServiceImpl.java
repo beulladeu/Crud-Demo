@@ -1,12 +1,15 @@
-package com.verkhonina.crud.controller;
+package com.verkhonina.crud.service;
 
 
 import com.verkhonina.crud.model.Skill;
-import com.verkhonina.crud.repository.GsonSkillRepository;
+import com.verkhonina.crud.repository.SkillRepository;
+import com.verkhonina.crud.repository.gson.*;
+
+import java.util.List;
 
 public class SkillServiceImpl implements SkillService {
 
-    private GsonSkillRepository skillRepository;
+    private SkillRepository skillRepository;
 
     public SkillServiceImpl() {
         this.skillRepository = new GsonSkillRepository();
@@ -19,7 +22,7 @@ public class SkillServiceImpl implements SkillService {
     }
 
 
-    public Long create(String name) {
+    public Skill create(String name) {
         Skill skill = new Skill(name);
         return skillRepository.save(skill);
     }
@@ -30,7 +33,12 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public boolean update(Skill skill) {
+    public Skill update(Skill skill) {
         return skillRepository.update(skill);
+    }
+
+    @Override
+    public List<Skill> getAll() {
+        return skillRepository.findAll();
     }
 }

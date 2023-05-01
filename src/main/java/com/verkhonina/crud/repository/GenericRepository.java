@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface GenericRepository<T, ID> {
 
-    ID save(T entity);
+    T save(T entity);
 
-    boolean update(T entity);
+    T update(T entity);
 
     T findById(ID id);
 

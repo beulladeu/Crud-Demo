@@ -1,4 +1,4 @@
-package com.verkhonina.crud.controller;
+package com.verkhonina.crud.service;
 
 import com.verkhonina.crud.model.Developer;
 import com.verkhonina.crud.model.Skill;
@@ -10,11 +10,13 @@ public interface DeveloperService {
 
     Developer getDeveloperByName(String firstName, String lastName);
 
-    Long create(String firstName, String lastName, List<Skill> skills, Specialty specialty);
+    Developer create(String firstName, String lastName, List<Skill> skills, Specialty specialty);
 
     Developer getById(Long id);
 
     boolean delete(Long id);
 
-    boolean update(Developer developer);
+    Developer update(Developer developer);
+
+    List<Developer> getAll();
 }

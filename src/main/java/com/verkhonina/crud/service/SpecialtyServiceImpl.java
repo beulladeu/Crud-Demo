@@ -1,8 +1,10 @@
-package com.verkhonina.crud.controller;
+package com.verkhonina.crud.service;
 
 import com.verkhonina.crud.model.Specialty;
-import com.verkhonina.crud.repository.GsonSpecialtyRepository;
 import com.verkhonina.crud.repository.SpecialtyRepository;
+import com.verkhonina.crud.repository.gson.*;
+
+import java.util.List;
 
 public class SpecialtyServiceImpl implements SpecialtyService {
 
@@ -18,7 +20,7 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
-    public Long create(String name) {
+    public Specialty create(String name) {
         Specialty specialty = new Specialty(name);
         return specialtyRepository.save(specialty);
     }
@@ -29,7 +31,12 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
-    public boolean update(Specialty specialty) {
+    public Specialty update(Specialty specialty) {
         return specialtyRepository.update(specialty);
+    }
+
+    @Override
+    public List<Specialty> getAll() {
+        return specialtyRepository.findAll();
     }
 }

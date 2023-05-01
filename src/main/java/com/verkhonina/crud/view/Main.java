@@ -1,8 +1,8 @@
 package com.verkhonina.crud.view;
 
-import com.verkhonina.crud.controller.*;
-import com.verkhonina.crud.model.Skill;
 import com.verkhonina.crud.model.Specialty;
+import com.verkhonina.crud.service.*;
+import com.verkhonina.crud.model.Skill;
 
 import java.util.List;
 
@@ -14,13 +14,16 @@ public class Main {
 
         SkillService skillService = new SkillServiceImpl();
 
-        Long id = skillService.create("spring");
+        Skill id = skillService.create("spring");
 
-        Long id2 = skillService.create("sql");
+        Skill id2 = skillService.create("sql");
 
         Skill s = skillService.getById(1L);
 
         System.out.println(s.getName());
+        List<Skill> skills = skillService.getAll();
+        System.out.println(s);
+
 
         boolean deleted = skillService.delete(s.getId());
 
@@ -29,7 +32,7 @@ public class Main {
         Skill s2 = skillService.getById(0L);
         s2.setName("java");
 
-        boolean updated = skillService.update(s2);
+        Skill updated = skillService.update(s2);
 
         System.out.println(updated);
 
@@ -48,6 +51,7 @@ public class Main {
         DeveloperService devService = new DeveloperServiceImpl();
 
         devService.create("Kolin", "Tompson", List.of(s, s2), specialty);
+
 
     }
 }

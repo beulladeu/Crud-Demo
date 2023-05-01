@@ -1,9 +1,10 @@
 package com.verkhonina.crud.repository;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import lombok.NoArgsConstructor;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,34 +12,17 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+@NoArgsConstructor
 public class JsonObjectSupport<T> {
 
-
-    public JsonObjectSupport() { }
-
-    public String toJson(T obj) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.toJson(obj);
-    }
-
+    private final Gson GSON = new Gson();
 
     public String listToJson(List<T> objs) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.toJson(objs);
+        return GSON.toJson(objs);
     }
 
-    /*public T jsonToObject(String jsonObj) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        return gson.fromJson(jsonObj, T);
-    }*/
-
-    public List<T> jsonToList(String jsonObj, Class<T[]> clazz) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        T[] objs = gson.fromJson(jsonObj, clazz);
+    public List<T> jsonToList(String jsonObj, Type type) {
+        T[] objs = GSON.fromJson(jsonObj, type);
         if (objs == null) return null;
         else return new LinkedList(Arrays.asList(objs));
     }
