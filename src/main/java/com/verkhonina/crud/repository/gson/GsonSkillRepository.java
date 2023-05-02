@@ -7,7 +7,9 @@ import com.verkhonina.crud.repository.SkillRepository;
 
 public class GsonSkillRepository extends JsonObjectRepository<Skill> implements SkillRepository {
 
+    private static final String filename = "C:\\Users\\v.verhonina\\Downloads\\skills.json";
+
     public GsonSkillRepository() {
-        super("C:\\Users\\v.verhonina\\Downloads\\skills.json", Skill[].class);
+        super(filename, Skill[].class);
     }
 }

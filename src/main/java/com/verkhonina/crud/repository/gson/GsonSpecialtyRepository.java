@@ -7,7 +7,9 @@ import com.verkhonina.crud.repository.SpecialtyRepository;
 
 public class GsonSpecialtyRepository extends JsonObjectRepository<Specialty> implements SpecialtyRepository {
 
+    private static final String filename = "C:\\Users\\v.verhonina\\Downloads\\specialties.json";
+
     public GsonSpecialtyRepository() {
-        super("C:\\Users\\v.verhonina\\Downloads\\specialties.json", Specialty[].class);
+        super(filename, Specialty[].class);
     }
 }
